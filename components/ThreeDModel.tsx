@@ -155,6 +155,7 @@ let earth: THREE.Object3D | null = null;
     mountRef.current.addEventListener("mousedown", handleMouseDown);
     mountRef.current.addEventListener("mouseup", handleMouseUp);
     mountRef.current.addEventListener("mousemove", handleMouseMove);
+    mountRef.current.addEventListener("wheel", handleWheel, { passive: false });
 
      animate();
     
