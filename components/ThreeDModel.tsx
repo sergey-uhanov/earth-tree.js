@@ -63,37 +63,37 @@ camera.lookAt(0, -2, 0)
     // Загружаем модель
 let earth: THREE.Object3D | null = null;
 
-    const loader = new GLTFLoader();
-    loader.load(
-      "/models/earth/earth.glb", // Путь к модели
-      (gltf) => {
-        console.log("Модель земли загружена:", gltf); 
-         earth = gltf.scene;
-        earth.scale.set(1, 1, 1); // Масштаб модели
-          scene.add(earth);
-      },
-      undefined,
-      (error) => {
-        console.error("Ошибка загрузки модели:", error);
-      }
-    );
-    let moon: THREE.Object3D | null = null;
+    // const loader = new GLTFLoader();
+    // loader.load(
+    //   "/models/earth/earth.glb", // Путь к модели
+    //   (gltf) => {
+    //     console.log("Модель земли загружена:", gltf); 
+    //      earth = gltf.scene;
+    //     earth.scale.set(1, 1, 1); // Масштаб модели
+    //       scene.add(earth);
+    //   },
+    //   undefined,
+    //   (error) => {
+    //     console.error("Ошибка загрузки модели:", error);
+    //   }
+    // );
+    // let moon: THREE.Object3D | null = null;
 
-    const loaderMoon = new GLTFLoader();
-    loaderMoon.load(
-      "/models/moon/moon.glb", // Путь к модели
-      (gltf) => {
-        console.log("Модель луны загружена:", gltf); 
-         moon = gltf.scene;
-        moon.scale.set(0.5, 0.5, 0.5); // Масштаб модели
-        moon.position.set(3, 0, 0); // Позиция модели
-          scene.add(moon);
-      },
-      undefined,
-      (error) => {
-        console.error("Ошибка загрузки модели:", error);
-      }
-    );
+    // const loaderMoon = new GLTFLoader();
+    // loaderMoon.load(
+    //   "/models/moon/moon.glb", // Путь к модели
+    //   (gltf) => {
+    //     console.log("Модель луны загружена:", gltf); 
+    //      moon = gltf.scene;
+    //     moon.scale.set(0.5, 0.5, 0.5); // Масштаб модели
+    //     moon.position.set(3, 0, 0); // Позиция модели
+    //       scene.add(moon);
+    //   },
+    //   undefined,
+    //   (error) => {
+    //     console.error("Ошибка загрузки модели:", error);
+    //   }
+    // );
 
  
 // Масштабирование сцены
@@ -139,15 +139,15 @@ let earth: THREE.Object3D | null = null;
     // Анимация
     const animate = () => {
       requestAnimationFrame(animate);
-      if (earth) {
-         earth.rotation.y -= 0.005;
-      }
+      // if (earth) {
+      //    earth.rotation.y -= 0.005;
+      // }
      
-      if (moon) {
-        moon.position.z = Math.sin(Date.now() / 1000) * 5;
-        moon.position.x = Math.cos(Date.now() / 1000) * 5;
-         moon.rotation.y += 0.005;
-      }
+      // if (moon) {
+      //   moon.position.z = Math.sin(Date.now() / 1000) * 5;
+      //   moon.position.x = Math.cos(Date.now() / 1000) * 5;
+      //    moon.rotation.y += 0.005;
+      // }
       renderer.render(scene, camera);
     };
 
@@ -172,7 +172,7 @@ let earth: THREE.Object3D | null = null;
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: "100%", height: "100vh" }} />;
+  return <div ref={mountRef} style={{ width: "100%", height: "50vh" }} />;
 };
 
 export default ThreeDModel;
