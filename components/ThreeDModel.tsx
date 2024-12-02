@@ -17,8 +17,8 @@ const ThreeDModel: React.FC = () => {
       const particlesContainer = document.createElement("div");
       particlesContainer.id = particlesId;
       if (!window.WebGLRenderingContext) {
-  particlesContainer.innerHTML = "Your browser doesn't support WebGL";
-  return;
+  console.log("Проверяем загрузку particles.js...");
+  
 }
       particlesContainer.style.position = "absolute";
       particlesContainer.style.top = "0";
