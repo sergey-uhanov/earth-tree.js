@@ -16,29 +16,143 @@ const ThreeDModel: React.FC = () => {
       const particlesId = "particles-js";
       const particlesContainer = document.createElement("div");
       particlesContainer.id = particlesId;
+      if (!window.WebGLRenderingContext) {
+  particlesContainer.innerHTML = "Your browser doesn't support WebGL";
+  return;
+}
       particlesContainer.style.position = "absolute";
       particlesContainer.style.top = "0";
       particlesContainer.style.left = "0";
-      particlesContainer.style.width = "100%";
-      particlesContainer.style.height = "100%";
+      particlesContainer.style.width = "100vw";
+      particlesContainer.style.height = "100vh";
       particlesContainer.style.zIndex = "-1"; // Помещаем частички на фон
       document.body.appendChild(particlesContainer);
-
-      fetch("/particlesjs-config.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Failed to load particles.js config: ${response.statusText}`);
+      window.particlesJS(particlesId, {
+  "particles": {
+    "number": {
+      "value": 400,
+      "density": {
+        "enable": true,
+        "value_area": 563.026832250177
+      }
+    },
+    "color": {
+      "value": "#ededa7"
+    },
+    "shape": {
+      "type": "triangle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 3
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 1,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 2, 
+        "opacity_min": 0.3,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 1,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": false,
+      "distance": 500,
+      "color": "#ffffff",
+      "opacity": 0.4,
+      "width": 2
+    },
+    "move": {
+      "enable": true,
+      "speed": 0,
+      "direction": "bottom",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 240.5118091298284,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "bubble"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "bubble"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 0.5
         }
-        return response.json();
-      })
-      .then((config) => {
-        // Инициализация particles.js с загруженным конфигом
-        window.particlesJS(particlesId, config);
-      })
-      .catch((error) => {
-        console.error("Ошибка загрузки particles.js конфигурации:", error);
-      });
-    });
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 4,
+        "duration": 0.3,
+        "opacity": 1,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+}
+);
+    //   fetch("/particlesjs-config.json")
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error(`Failed to load particles.js config: ${response.statusText}`);
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((config) => {
+    //     // Инициализация particles.js с загруженным конфигом
+    //     window.particlesJS(particlesId, config);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Ошибка загрузки particles.js конфигурации:", error);
+    //   });
+     });
    
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
